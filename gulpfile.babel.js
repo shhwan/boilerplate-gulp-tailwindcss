@@ -13,13 +13,13 @@ sass.compoiler = require("node-sass");
 
 const gulpdir = {
     scss: {
-        watch: "assets/scss/**/*.scss",
-        src: "assets/scss/styles.scss",
+        watch: "src/scss/**/*.scss",
+        src: "src/scss/styles.scss",
         dest: "static/css"
     },
     js: {
-        watch: "assets/js/**/*.js",
-        src: "assets/js/main.js",
+        watch: "src/js/**/*.js",
+        src: "src/js/main.js",
         dest: "static/js"
     }
 }
