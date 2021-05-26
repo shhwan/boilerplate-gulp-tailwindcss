@@ -1,7 +1,7 @@
 # boilerplate-gulp-tailwindcss
 Gulp + Babel + TailwindCSS  
 ## Command
-- yarn build
+- npm run build
 
 ## Link
 ### TailwindCSS

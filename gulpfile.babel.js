@@ -7,6 +7,7 @@ import minifyCSS from "gulp-csso";
 import tailwindcss from "tailwindcss";
 import uglify from "gulp-uglify";
 import babel from "gulp-babel";
+import typescript from "gulp-typescript";
 
 sass.compoiler = require("node-sass");
 
@@ -15,12 +16,17 @@ const gulpdir = {
     scss: {
         watch: "src/scss/**/*.scss",
         src: "src/scss/styles.scss",
-        dest: "static/css"
+        dest: "statics/css"
     },
     js: {
         watch: "src/js/**/*.js",
         src: "src/js/main.js",
-        dest: "static/js"
+        dest: "statics/js"
+    },
+    ts: {
+        watch: "src/ts/**/*.ts",
+        src: "src/ts/*.ts",
+        dest: "statics/ts" 
     }
 }
 
@@ -45,7 +51,15 @@ const js = () => gulp
     .pipe(uglify())
     .pipe(gulp.dest(gulpdir.js.dest));
 
+const ts = () => gulp
+    .src(gulpdir.ts.src)
+    .pipe(typescript({
+        target: 'ES5',
+        removeComments: true,
+    }))
+    .pipe(gulp.dest(gulpdir.ts.dest))
+
 const ready = gulp.series([clean]);
-const assets = gulp.series([js, styles]);
+const assets = gulp.series([js, ts, styles]);
 
 export const build = gulp.series([ready, assets,]);
